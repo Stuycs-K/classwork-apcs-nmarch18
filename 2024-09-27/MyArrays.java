@@ -11,23 +11,25 @@ public class MyArrays{
     return str;
   }
 
-  public static int[] returnCopy(int[]ary)
+  public static int returnCopy(int[]ary) {
+    return 0;
+  }
 
-
-  public static int[] concatArray(int[]ary1,int[]ary2)
-
+  public static int concatArray(int[]ary1,int[]ary2) {
+    return 0;
+  }
 
   public static void main (String[] args){
     // 3 test cases for returnCopy
     // Tests for different addresses, same strings.
     System.out.println("Tests for returnCopy; expected true");
-    int[] ary = [1, 2, 3, 4, 5];
+    int[] ary = {1, 2, 3, 4, 5};
     System.out.println((returnCopy(ary) != ary) && aryToString(returnCopy(ary)).equals(aryToString(ary)));
 
-    int[] ary = [];
+    ary = new int[0];
     System.out.println((returnCopy(ary) != ary) && aryToString(returnCopy(ary)).equals(aryToString(ary)));
 
-    int[] ary = [100, 60, 20, 19, 40, 81];
+    ary = new int[]{100, 60, 20, 19, 40, 81};
     System.out.println((returnCopy(ary) != ary) && aryToString(returnCopy(ary)).equals(aryToString(ary)));
 
   }
