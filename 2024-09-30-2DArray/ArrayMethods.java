@@ -48,6 +48,13 @@ public static String arrToString2(int[][]ary){
 /*Return the sum of all of the values in the 2D array */
 public static int arr2DSum(int[][]nums){
   //use a nested loop to solve this
+  int sum = 0;
+  for (int x = 0; x < nums.length; x++) {
+    for (int i = 0; i < nums[x].length; i++) {
+      sum += nums[x][i];
+    }
+  }
+  return sum;
 }
 
 /**Rotate an array by returning a new array with the rows and columns swapped.
@@ -58,4 +65,8 @@ public static int[][] swapRC(int[][]nums){
   return new int[1][1];
 }
 
+}
+
+public static void main(String[] args){
+  
 }
