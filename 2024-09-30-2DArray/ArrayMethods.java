@@ -62,11 +62,17 @@ public static int arr2DSum(int[][]nums){
   * e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
   */
 public static int[][] swapRC(int[][]nums){
-  return new int[1][1];
+  int[][] arr = new int[nums[0].length][nums.length];
+  for (int i = 0; i < nums[0].length; i++){
+    for (int j = 0; i < nums.length; j++){
+      arr[i][j] = nums[j][i];
+    }
+  }
+  return arr;
 }
 
 }
 
 public static void main(String[] args){
-  
+
 }
