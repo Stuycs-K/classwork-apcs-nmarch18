@@ -32,7 +32,8 @@ public class ArrayMethods{
   * You are encouraged to notice that you may want to re-use
   * previous code, but you should NOT duplicate that code. (Don't copy/paste or retype it)
   */
-  public static String arrToString2(int[][]ary){
+  
+  public static String arrToString (int[][] ary){
     String str = "[";
     for (int i = 0; i < ary.length; i++){
       if (i < ary.length - 1){
@@ -41,7 +42,7 @@ public class ArrayMethods{
       else {
         str += arrToString(ary[i]);
       }
-  } 
+  }
     return str + "]";
   }
 
@@ -77,17 +78,17 @@ public class ArrayMethods{
 
     arr = new int[]{1, 2, 3, 4};
     System.out.println("arrToString test: " + arrToString(arr) + "\n");
-    
+
     // 3 test cases for arrToString2: expected the array in string form
 
     arr2D = new int[2][4];
-    System.out.println("arrToString2 test 1: " + arrToString2(arr2D));
+    System.out.println("arrToString 2D test 1: " + arrToString(arr2D));
 
     arr2D = new int[][]{{1, 2, 3}, {2, 3}, {3}, {}};
-    System.out.println("arrToString2 test 2: " + arrToString2(arr2D));
+    System.out.println("arrToString 2D test 2: " + arrToString(arr2D));
 
     arr2D = new int[0][0];
-    System.out.println("arrToString2 test 3: " + arrToString2(arr2D) + "\n");
+    System.out.println("arrToString 2D test 3: " + arrToString(arr2D) + "\n");
 
     // 3 test cases for arr2DSum: expected sum of all the ints in the 2D array
 
@@ -99,8 +100,9 @@ public class ArrayMethods{
 
     arr2D = new int[][]{{410}, {41, 0}, {4, 10}, {4, 1, 0}};
     System.out.println("arr2DSum test 3: " + arr2DSum(arr2D));
-    
+
     // 3 test cases for swapRC:
+
   }
 
 }
