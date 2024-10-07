@@ -1,6 +1,6 @@
 //1. Write both your names + emails at the top of the document as a comment.
 
-// Nicolas Marchese - nicolasm73@nycstudents.net
+// Nicolas Marchese - nicolasm73@nycstudents.net (git email: nicktmarchese@gmail.com?)
 // Joyce Lin - joycel78@nycstudents.net
 
 //2. Copy your arrToString method from before.
@@ -33,7 +33,7 @@ public class ArrayMethods{
   * previous code, but you should NOT duplicate that code. (Don't copy/paste or retype it)
   */
 
-  public static String arrToString (int[][] ary){
+  public static String arrToString (int[][] ary){ // 2D version
     String str = "[";
     for (int i = 0; i < ary.length; i++){
       if (i < ary.length - 1){
@@ -63,10 +63,10 @@ public class ArrayMethods{
   * e.g. swapRC({{1,2,3},{4,5,6}}) returns {{1,4},{2,5},{3,6}}
   */
   public static int[][] swapRC(int[][]nums){
-    int[][] arr = new int[nums[0].length][nums.length];
-    for (int i = 0; i < nums[0].length; i++){
-      for (int j = 0; i < nums.length; j++){
-        arr[i][j] = nums[j][i];
+    int[][] arr = new int[nums[0].length][nums.length]; // We know it is rectangular, so we can use nums[0]'s length
+    for (int row = 0; row < nums[0].length; row++){
+      for (int col = 0; col < nums.length; col++){
+        arr[row][col] = nums[col][row];
       }
     }
     return arr;
@@ -78,8 +78,8 @@ public class ArrayMethods{
   //that negative with the value 1
   //-All other negatives replace with 0
   public static void replaceNegative(int[][] vals){
-    for (int row = 0; row < vals.length; row++) {
-      for (int col = 0; col < vals[x].length; col++) {
+    for (int row = 0; row < vals.length; row++) { // treat vals[row][col] like a coordinate
+      for (int col = 0; col < vals[row].length; col++) {
         if (row == col && vals[row][col] < 0) {
           vals[row][col] = 1;
         }
@@ -97,17 +97,19 @@ public class ArrayMethods{
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
   public static int[][] copy(int[][] nums){
-    return null;//placeholder so it compiles
+    return null; //placeholder so it compiles
   }
 
   public static void main(String[] args){
     int[] arr;
     int[][] arr2D;
 
-    arr = new int[]{1, 2, 3, 4};
-    System.out.println("arrToString test: " + arrToString(arr) + "\n");
+    // 1 test case for arrToString (I already know it works):
 
-    // 3 test cases for arrToString2: expected the array in string form
+    arr = new int[]{1, 2, 3, 4};
+    System.out.println("\narrToString test: " + arrToString(arr) + "\n");
+
+    // 3 test cases for arrToString (2D): expected the array in string form
 
     arr2D = new int[2][4];
     System.out.println("arrToString 2D test 1: " + arrToString(arr2D));
@@ -127,10 +129,18 @@ public class ArrayMethods{
     System.out.println("arr2DSum test 2: " + arr2DSum(arr2D));
 
     arr2D = new int[][]{{410}, {41, 0}, {4, 10}, {4, 1, 0}};
-    System.out.println("arr2DSum test 3: " + arr2DSum(arr2D));
+    System.out.println("arr2DSum test 3: " + arr2DSum(arr2D) + "\n");
 
     // 3 test cases for swapRC:
 
+    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}};
+    System.out.println("swapRC test 1: " + arrToString(swapRC(arr2D)));
+
+    arr2D = new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
+    System.out.println("swapRC test 2: " + arrToString(swapRC(arr2D)));
+
+    arr2D = new int[3][6];
+    System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
   }
 
 }
