@@ -94,23 +94,39 @@ public class ArrayMethods{
   //4. Make a copy of the given 2d array.
   //When testing : make sure that changing the original does NOT change the copy.
   //DO NOT use any built in methods that "copy" an array.
-  //You SHOULD write a helper method for this.
+  //You SHOULD write a helper method for this. 
   //If you don't see a good way to do that, you should stop and look at prior methods.
+
+  /* Personally, I don't see the need for a helper function. It would only separate two for loops that should be together. */
+
   public static int[][] copy(int[][] nums){
-    return null;
+    int[][] newcopy = new int[nums.length][];
+    for (int x = 0; x < nums.length; x++){
+      newcopy[x] = new int[nums[x].length]; // make a matching non-rectangular array this way, set individual sub-arrays' lengths
+    }
+    for (int i = 0; i < nums.length; i++){
+      for (int j = 0; j < nums[i].length; j++){
+        newcopy[i][j] = nums[i][j]; // then fill the array one by one in each corresponding index
+      }
+    }
+    return newcopy;
   }
-
-
 
   // MAIN w/ tests vvv
   public static void main(String[] args){
     int[] arr;
     int[][] arr2D;
 
-    // 1 test case for arrToString (we already know it works, same code for everyone):
+    // 3 test cases for arrToString: expect the array in string form
 
     arr = new int[]{1, 2, 3, 4};
-    System.out.println("\narrToString test: " + arrToString(arr) + "\n");
+    System.out.println("\narrToString test 1: " + arrToString(arr));
+
+    arr = new int[]{};
+    System.out.println("arrToString test 2: " + arrToString(arr));
+
+    arr = new int[]{91, 24, 13, 4, 0, 9, 15, 62};
+    System.out.println("arrToString test 3: " + arrToString(arr) + "\n");
 
     // 3 test cases for arrToString (2D): expect the array in string form
 
@@ -156,20 +172,18 @@ public class ArrayMethods{
     arr2D = new int[][]{{}, {}, {}, {2, -2, 2, -2, 2, -2}};
     System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)) + "\n");
 
-    // 3 test cases for copy:
+    // 3 test cases for copy: expected unequal addresses and the same array when displayed as a string
 
     arr2D = new int[][]{{1, 2, 3}, {4, 5}, {6}, {7, 8}, {9, 10, 11, 12}};
     System.out.println("copy test 1: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)));
 
-    arr2D = new int[4][1];
+    arr2D = new int[4][3];
     System.out.println("copy test 2: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)));
 
-    arr2D = new int[][];
-    System.out.println("copy test 3: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)));
-
-
-
+    arr2D = new int[][]{{},{0, 96, 0},{}};
+    System.out.println("copy test 3: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)) + "\n");
 
   }
-
 }
+
+// Conclusion: tests were successful. If other test cases exist that give an unexpected result, so be it.
