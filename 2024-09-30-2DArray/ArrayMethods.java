@@ -97,9 +97,12 @@ public class ArrayMethods{
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
   public static int[][] copy(int[][] nums){
-    return null; //placeholder so it compiles
+    return null;
   }
 
+
+
+  // MAIN w/ tests vvv
   public static void main(String[] args){
     int[] arr;
     int[][] arr2D;
@@ -153,7 +156,20 @@ public class ArrayMethods{
     arr2D = new int[][]{{}, {}, {}, {2, -2, 2, -2, 2, -2}};
     System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)) + "\n");
 
-    // 3 test cases for copy: 
+    // 3 test cases for copy:
+
+    arr2D = new int[][]{{1, 2, 3}, {4, 5}, {6}, {7, 8}, {9, 10, 11, 12}};
+    System.out.println("copy test 1: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)));
+
+    arr2D = new int[4][1];
+    System.out.println("copy test 2: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)));
+
+    arr2D = new int[][];
+    System.out.println("copy test 3: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)));
+
+
+
+
   }
 
 }
