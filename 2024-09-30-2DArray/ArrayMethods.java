@@ -50,9 +50,9 @@ public class ArrayMethods{
   public static int arr2DSum(int[][]nums){
   //use a nested loop to solve this
     int sum = 0;
-    for (int x = 0; x < nums.length; x++) {
-      for (int i = 0; i < nums[x].length; i++) {
-        sum += nums[x][i];
+    for (int r = 0; r < nums.length; r++) {
+      for (int c = 0; c < nums[r].length; c++) {
+        sum += nums[r][c];
       }
     }
     return sum;
@@ -64,9 +64,9 @@ public class ArrayMethods{
   */
   public static int[][] swapRC(int[][]nums){
     int[][] arr = new int[nums[0].length][nums.length]; // We know it is rectangular, so we can use nums[0]'s length
-    for (int row = 0; row < nums[0].length; row++){
-      for (int col = 0; col < nums.length; col++){
-        arr[row][col] = nums[col][row];
+    for (int r = 0; r < nums[0].length; r++){
+      for (int c = 0; c < nums.length; c++){
+        arr[r][c] = nums[c][r];
       }
     }
     return arr;
@@ -77,7 +77,7 @@ public class ArrayMethods{
   //-When the row number is the same as the column number replace
   //that negative with the value 1
   //-All other negatives replace with 0
-  public static void replaceNegative(int[][] vals){
+  public static int[][] replaceNegative(int[][] vals){
     for (int row = 0; row < vals.length; row++) { // treat vals[row][col] like a coordinate
       for (int col = 0; col < vals[row].length; col++) {
         if (row == col && vals[row][col] < 0) {
@@ -88,8 +88,8 @@ public class ArrayMethods{
         }
       }
     }
+    return vals;
   }
-
 
   //4. Make a copy of the given 2d array.
   //When testing : make sure that changing the original does NOT change the copy.
@@ -104,12 +104,12 @@ public class ArrayMethods{
     int[] arr;
     int[][] arr2D;
 
-    // 1 test case for arrToString (I already know it works):
+    // 1 test case for arrToString (we already know it works, same code for everyone):
 
     arr = new int[]{1, 2, 3, 4};
     System.out.println("\narrToString test: " + arrToString(arr) + "\n");
 
-    // 3 test cases for arrToString (2D): expected the array in string form
+    // 3 test cases for arrToString (2D): expect the array in string form
 
     arr2D = new int[2][4];
     System.out.println("arrToString 2D test 1: " + arrToString(arr2D));
@@ -120,7 +120,7 @@ public class ArrayMethods{
     arr2D = new int[0][0];
     System.out.println("arrToString 2D test 3: " + arrToString(arr2D) + "\n");
 
-    // 3 test cases for arr2DSum: expected sum of all the ints in the 2D array
+    // 3 test cases for arr2DSum: expect some int which is the sum
 
     arr2D = new int[][]{{3, 4, 2}, {8, 0, 1}, {5, 2, 2}, {6, 3, 0}, {1, 4, 4}};
     System.out.println("arr2DSum test 1: " + arr2DSum(arr2D));
@@ -131,7 +131,7 @@ public class ArrayMethods{
     arr2D = new int[][]{{410}, {41, 0}, {4, 10}, {4, 1, 0}};
     System.out.println("arr2DSum test 3: " + arr2DSum(arr2D) + "\n");
 
-    // 3 test cases for swapRC:
+    // 3 test cases for swapRC: expect a 2d array w/ opposite dimensions and same values, in the right order
 
     arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}};
     System.out.println("swapRC test 1: " + arrToString(swapRC(arr2D)));
@@ -141,6 +141,19 @@ public class ArrayMethods{
 
     arr2D = new int[3][6];
     System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
+
+    // 3 test cases for replaceNegative: expect a slightly changed array from the original
+
+    arr2D = new int[][]{{-3, -3, 3, 3}, {-4, 4, -4}, {5, 5, -5, 5, -5}};
+    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)));
+
+    arr2D = new int[][]{{-6}, {-6, 6}, {-6, 6, -6}, {-6, 6, -6, 6}};
+    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)));
+
+    arr2D = new int[][]{{}, {}, {}, {2, -2, 2, -2, 2, -2}};
+    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)) + "\n");
+
+    // 3 test cases for copy: 
   }
 
 }
