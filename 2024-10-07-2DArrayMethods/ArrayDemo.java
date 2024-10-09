@@ -80,7 +80,7 @@ public class ArrayDemo{
     arr2D = new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
     System.out.println("swapRC test 2: " + arrToString(swapRC(arr2D)));
 
-    arr2D = new int[3][6];
+    arr2D = new int[][]{{2, 0, 1}, {2, 0, 1}, {2, 0, 1}, {2, 0, 1}};
     System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
   }
 
@@ -168,10 +168,11 @@ public class ArrayDemo{
   //DO NOT use any built in methods that "copy" an array.
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
+
   public static int[][] copy(int[][] nums){
     int[][] newcopy = new int[nums.length][];
     for (int x = 0; x < nums.length; x++){
-      newcopy[x] = new int[nums[x].length]; // make a matching non-rectangular array this way, set individual sub-arrays' lengths
+      newcopy[x] = new int[nums[x].length]; // make a matching non-rectangular array this way, setting each sub-array's length
     }
     for (int i = 0; i < nums.length; i++){
       for (int j = 0; j < nums[i].length; j++){
@@ -187,8 +188,8 @@ public class ArrayDemo{
 
   public static int[][] swapRC(int[][]nums){
     int[][] arr = new int[nums[0].length][nums.length]; // We know it is rectangular, so we can use nums[0]'s length
-    for (int r = 0; r < nums[0].length; r++){
-      for (int c = 0; c < nums.length; c++){
+    for (int r = 0; r < arr.length; r++){
+      for (int c = 0; c < arr[r].length; c++){
         arr[r][c] = nums[c][r];
       }
     }
@@ -202,6 +203,15 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String html = "<table>";
+    for (int r = 0; r < nums.length; r++){
+      html += "<tr>";
+      for (int c = 0; c < nums[r].length; c++){
+        html += "<td>" + nums[r][c] + "</td>";
+      }
+      html += "</tr>";
+    }
+    return (html + "</table>");
   }
+
 }
