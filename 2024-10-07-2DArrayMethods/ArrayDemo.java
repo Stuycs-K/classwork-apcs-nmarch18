@@ -82,6 +82,17 @@ public class ArrayDemo{
 
     arr2D = new int[][]{{2, 0, 1}, {2, 0, 1}, {2, 0, 1}, {2, 0, 1}};
     System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
+
+    // 3 test cases for htmlTable: expect a single line with proper formatting and rows being each sub-array
+
+    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    System.out.println("htmlTable test 1: " + htmlTable(arr2D));
+
+    arr2D = new int[4][2];
+    System.out.println("htmlTable test 2: " + htmlTable(arr2D));
+
+    arr2D = new int[][]{{-5}, {}, {2}, {}, {9}};
+    System.out.println("htmlTable test 3: " + htmlTable(arr2D));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -213,5 +224,4 @@ public class ArrayDemo{
     }
     return (html + "</table>");
   }
-
 }
