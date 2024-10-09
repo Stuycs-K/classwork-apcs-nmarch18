@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class ArrayDemo{
   public static void main(String[]args){
+
     int[] arr;
     int[][] arr2D;
 
@@ -38,27 +39,16 @@ public class ArrayDemo{
     arr2D = new int[][]{{410}, {41, 0}, {4, 10}, {4, 1, 0}};
     System.out.println("arr2DSum test 3: " + arr2DSum(arr2D) + "\n");
 
-    // 3 test cases for swapRC: expect a 2d array w/ opposite dimensions and same values, in the right order
-
-    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}};
-    System.out.println("swapRC test 1: " + arrToString(swapRC(arr2D)));
-
-    arr2D = new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
-    System.out.println("swapRC test 2: " + arrToString(swapRC(arr2D)));
-
-    arr2D = new int[3][6];
-    System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
-
     // 3 test cases for replaceNegative: expect a slightly changed array from the original
 
     arr2D = new int[][]{{-3, -3, 3, 3}, {-4, 4, -4}, {5, 5, -5, 5, -5}};
     System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)));
 
     arr2D = new int[][]{{-6}, {-6, 6}, {-6, 6, -6}, {-6, 6, -6, 6}};
-    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)));
+    System.out.println("replaceNegative test 2: " + arrToString(replaceNegative(arr2D)));
 
     arr2D = new int[][]{{}, {}, {}, {2, -2, 2, -2, 2, -2}};
-    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)) + "\n");
+    System.out.println("replaceNegative test 3: " + arrToString(replaceNegative(arr2D)) + "\n");
 
     // 3 test cases for copy: expected unequal addresses and the same array when displayed as a string
 
@@ -70,6 +60,17 @@ public class ArrayDemo{
 
     arr2D = new int[][]{{},{0, 96, 0},{}};
     System.out.println("copy test 3: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)) + "\n");
+
+    // 3 test cases for swapRC: expect a 2d array w/ opposite dimensions and same values, in the right order
+
+    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}};
+    System.out.println("swapRC test 1: " + arrToString(swapRC(arr2D)));
+
+    arr2D = new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
+    System.out.println("swapRC test 2: " + arrToString(swapRC(arr2D)));
+
+    arr2D = new int[3][6];
+    System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
