@@ -28,6 +28,17 @@ public class ArrayDemo{
     arr2D = new int[0][0];
     System.out.println("arrToString 2D test 3: " + arrToString(arr2D) + "\n");
 
+    // 3 test cases for countZeros2D: expected the number of 0s in the array
+
+    arr2D = new int[20][25];
+    System.out.println("countZeros2D test 1: " + countZeros2D(arr2D));
+
+    arr2D = new int[][]{{1, 0, 3}, {-1, 0, -3}, {0, 0, 0}};
+    System.out.println("countZeros2D test 2: " + countZeros2D(arr2D));
+
+    arr2D = new int[11][111];
+    System.out.println("countZeros2D test 3: " + countZeros2D(arr2D) + "\n");
+
     // 3 test cases for arr2DSum: expect some int which is the sum
 
     arr2D = new int[][]{{3, 4, 2}, {8, 0, 1}, {5, 2, 2}, {6, 3, 0}, {1, 4, 4}};
@@ -107,7 +118,15 @@ public class ArrayDemo{
 
   //1. Calculate and return how many elements equal zero in the 2D array.
   public static int countZeros2D(int[][] nums){
-    return 0;
+    int count = 0;
+    for (int r = 0; r < nums.length; r++){
+      for (int c = 0; c < nums[r].length; c++){
+        if (nums[r][c] == 0){ // goes once thru every value
+          count += 1;
+        }
+      }
+    }
+    return count;
   }
 
   //2. Calculate the sum of a 2d array
