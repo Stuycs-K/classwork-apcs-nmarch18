@@ -2,6 +2,7 @@ import java.util.Arrays;
 
 public class ArrayDemo{
   public static void main(String[]args){
+
     int[] arr;
     int[][] arr2D;
 
@@ -27,6 +28,17 @@ public class ArrayDemo{
     arr2D = new int[0][0];
     System.out.println("arrToString 2D test 3: " + arrToString(arr2D) + "\n");
 
+    // 3 test cases for countZeros2D: expected the number of 0s in the array
+
+    arr2D = new int[20][25];
+    System.out.println("countZeros2D test 1: " + countZeros2D(arr2D));
+
+    arr2D = new int[][]{{1, 0, 3}, {-1, 0, -3}, {0, 0, 0}};
+    System.out.println("countZeros2D test 2: " + countZeros2D(arr2D));
+
+    arr2D = new int[11][111];
+    System.out.println("countZeros2D test 3: " + countZeros2D(arr2D) + "\n");
+
     // 3 test cases for arr2DSum: expect some int which is the sum
 
     arr2D = new int[][]{{3, 4, 2}, {8, 0, 1}, {5, 2, 2}, {6, 3, 0}, {1, 4, 4}};
@@ -38,27 +50,16 @@ public class ArrayDemo{
     arr2D = new int[][]{{410}, {41, 0}, {4, 10}, {4, 1, 0}};
     System.out.println("arr2DSum test 3: " + arr2DSum(arr2D) + "\n");
 
-    // 3 test cases for swapRC: expect a 2d array w/ opposite dimensions and same values, in the right order
-
-    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}};
-    System.out.println("swapRC test 1: " + arrToString(swapRC(arr2D)));
-
-    arr2D = new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
-    System.out.println("swapRC test 2: " + arrToString(swapRC(arr2D)));
-
-    arr2D = new int[3][6];
-    System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
-
     // 3 test cases for replaceNegative: expect a slightly changed array from the original
 
     arr2D = new int[][]{{-3, -3, 3, 3}, {-4, 4, -4}, {5, 5, -5, 5, -5}};
     System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)));
 
     arr2D = new int[][]{{-6}, {-6, 6}, {-6, 6, -6}, {-6, 6, -6, 6}};
-    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)));
+    System.out.println("replaceNegative test 2: " + arrToString(replaceNegative(arr2D)));
 
     arr2D = new int[][]{{}, {}, {}, {2, -2, 2, -2, 2, -2}};
-    System.out.println("replaceNegative test 1: " + arrToString(replaceNegative(arr2D)) + "\n");
+    System.out.println("replaceNegative test 3: " + arrToString(replaceNegative(arr2D)) + "\n");
 
     // 3 test cases for copy: expected unequal addresses and the same array when displayed as a string
 
@@ -70,6 +71,28 @@ public class ArrayDemo{
 
     arr2D = new int[][]{{},{0, 96, 0},{}};
     System.out.println("copy test 3: original address " + arr2D + "\t copy address " + copy(arr2D) + "\t copy array " + arrToString(copy(arr2D)) + "\n");
+
+    // 3 test cases for swapRC: expect a 2d array w/ opposite dimensions and same values, in the right order
+
+    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}};
+    System.out.println("swapRC test 1: " + arrToString(swapRC(arr2D)));
+
+    arr2D = new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}};
+    System.out.println("swapRC test 2: " + arrToString(swapRC(arr2D)));
+
+    arr2D = new int[][]{{2, 0, 1}, {2, 0, 1}, {2, 0, 1}, {2, 0, 1}};
+    System.out.println("swapRC test 3: " + arrToString(swapRC(arr2D)) + "\n");
+
+    // 3 test cases for htmlTable: expect a single line with proper formatting and rows being each sub-array
+
+    arr2D = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    System.out.println("htmlTable test 1: " + htmlTable(arr2D));
+
+    arr2D = new int[4][2];
+    System.out.println("htmlTable test 2: " + htmlTable(arr2D));
+
+    arr2D = new int[][]{{-5}, {}, {2}, {}, {9}};
+    System.out.println("htmlTable test 3: " + htmlTable(arr2D));
   }
 
   //0. Include your prior methods to help you print a 1D/2D array of ints.
@@ -106,7 +129,15 @@ public class ArrayDemo{
 
   //1. Calculate and return how many elements equal zero in the 2D array.
   public static int countZeros2D(int[][] nums){
-    return 0;
+    int count = 0;
+    for (int r = 0; r < nums.length; r++){
+      for (int c = 0; c < nums[r].length; c++){
+        if (nums[r][c] == 0){ // goes once thru every value
+          count += 1;
+        }
+      }
+    }
+    return count;
   }
 
   //2. Calculate the sum of a 2d array
@@ -130,13 +161,13 @@ public class ArrayDemo{
   //-All other negatives replace with 0
 
   public static int[][] replaceNegative(int[][] vals){
-    for (int row = 0; row < vals.length; row++) { // treat vals[row][col] like a coordinate
-      for (int col = 0; col < vals[row].length; col++) {
-        if (row == col && vals[row][col] < 0) {
-          vals[row][col] = 1;
+    for (int r = 0; r < vals.length; r++) { // treat vals[row][col] like a coordinate
+      for (int c = 0; c < vals[r].length; c++) {
+        if (r == c && vals[r][c] < 0) {
+          vals[r][c] = 1;
         }
-        else if (vals[row][col] < 0) {
-          vals[row][col] = 0;
+        else if (vals[r][c] < 0) {
+          vals[r][c] = 0;
         }
       }
     }
@@ -148,14 +179,15 @@ public class ArrayDemo{
   //DO NOT use any built in methods that "copy" an array.
   //You SHOULD write a helper method for this.
   //If you don't see a good way to do that, you should stop and look at prior methods.
+
   public static int[][] copy(int[][] nums){
     int[][] newcopy = new int[nums.length][];
     for (int x = 0; x < nums.length; x++){
-      newcopy[x] = new int[nums[x].length]; // make a matching non-rectangular array this way, set individual sub-arrays' lengths
+      newcopy[x] = new int[nums[x].length]; // make a matching non-rectangular array this way, setting each sub-array's length
     }
-    for (int i = 0; i < nums.length; i++){
-      for (int j = 0; j < nums[i].length; j++){
-        newcopy[i][j] = nums[i][j]; // then fill the array one by one in each corresponding index
+    for (int r = 0; r < nums.length; r++){
+      for (int c = 0; c < nums[r].length; c++){
+        newcopy[r][c] = nums[r][c]; // then fill the array one by one in each corresponding index
       }
     }
     return newcopy;
@@ -167,8 +199,8 @@ public class ArrayDemo{
 
   public static int[][] swapRC(int[][]nums){
     int[][] arr = new int[nums[0].length][nums.length]; // We know it is rectangular, so we can use nums[0]'s length
-    for (int r = 0; r < nums[0].length; r++){
-      for (int c = 0; c < nums.length; c++){
+    for (int r = 0; r < arr.length; r++){
+      for (int c = 0; c < arr[r].length; c++){
         arr[r][c] = nums[c][r];
       }
     }
@@ -182,6 +214,14 @@ public class ArrayDemo{
   //   e.g. htmlTable(new int[][]{{1,2},{3}})  returns:
   // "<table><tr><td>1</td><td>2</td></tr><tr><td>3</td></tr></table>"
   public static String htmlTable(int[][]nums){
-    return "";
+    String html = "<table>";
+    for (int r = 0; r < nums.length; r++){
+      html += "<tr>";
+      for (int c = 0; c < nums[r].length; c++){
+        html += "<td>" + nums[r][c] + "</td>";
+      }
+      html += "</tr>";
+    }
+    return (html + "</table>");
   }
 }
