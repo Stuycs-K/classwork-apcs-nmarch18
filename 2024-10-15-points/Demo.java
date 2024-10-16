@@ -9,6 +9,7 @@ public class Demo{
   }
 
   public static void main(String[]args){
+
     // make point objects
     Point p1 = new Point(1,1);
     Point p2 = new Point(-1,-1);
@@ -20,6 +21,7 @@ public class Demo{
     System.out.println( p2);
     System.out.println( p3 + "\n");
 
+    // all 3 distance methods are tested in each test.
     System.out.println("distance methods test1: expected sqrt8 (~2.8284)");
     System.out.println( distance(p2,p1));
     System.out.println( Point.distance(p1,p2));
@@ -35,5 +37,19 @@ public class Demo{
     System.out.println( Point.distance(p2,p3));
     System.out.println( p3.distanceTo(p2) + "\n");
 
+    /* ----------------------------------------------------------------------------------------------------------------- */
+
+    // coordinates of a triangle
+    Point q = new Point(0,0);
+    Point r = new Point(0.5,Math.sqrt(0.75));
+    Point s = new Point(1,0);
+
+    // printing side lengths
+    System.out.println("triangle qrs's side lengths:");
+    System.out.println("qr = " + distance(q, r));
+    System.out.println("rs = " + distance(r, s));
+    System.out.println("qs = " + distance(q, s));
+
+    // all 3 lengths fall within a range of 1*10^-15 so it is OK
   }
 }
