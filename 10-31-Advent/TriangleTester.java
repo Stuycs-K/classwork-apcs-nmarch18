@@ -32,4 +32,38 @@ public class TriangleTester{
 
     }
   }
+
+  public static int countTrianglesB(String filename){
+    try{
+      int[][] columns = new int[3][3];
+      int count = 0;
+      File file = new File(filename);
+      Scanner input = new Scanner(file);
+
+      while (input.hasNextInt()){
+        for (int i = 0; i < 3; i++){
+          columns[0][i] = input.nextInt();
+          columns[1][i] = input.nextInt();
+          columns[2][i] = input.nextInt();
+        }
+
+        for (int i = 0; i < 3; i++){
+          int a = columns[i][0];
+          int b = columns[i][1];
+          int c = columns[i][2];
+
+          if (a + b > c && a + c > b && b + c > a){
+            count += 1;
+          }
+        }
+      }
+
+      return count;
+
+    } catch (FileNotFoundException e) {
+      System.out.println("File not found!");
+      return -1;
+    }
+  }
+
 }
