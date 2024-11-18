@@ -36,7 +36,28 @@ public class ArrayListPractice{
   }
 
   public static ArrayList<String> mixLists( ArrayList<String> a,  ArrayList<String> b){
-  //return a new ArrayList that has all values of a and b in alternating order that is:
-  //a[0], b[0], a[1], b[1]...
-  //If one list is longer than the other, just attach the remaining values to the end.
+    ArrayList<String> answer = new ArrayList<String>();
+    int inCommon = Math.min(a.size(), b.size());
+    int i = 0;
+    while (i <= inCommon-1){ // add the first indices which exist in both arrays
+      answer.add(a.get(i));
+      answer.add(b.get(i));
+      i++;
+    }
+    if (a.size() > b.size()){ // keep adding from A if that's what's left over
+      while (i < a.size()){
+        answer.add(a.get(i));
+        i++;
+      }
+    }
+    else
+    if (b.size() > a.size()){ // else keep adding from B if that's what's left over
+      while (i < b.size()){
+        answer.add(b.get(i));
+        i++;
+      }
+    }
+    return answer;
+  }
+
 }
