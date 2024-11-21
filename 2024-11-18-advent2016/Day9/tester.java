@@ -9,9 +9,9 @@ public class tester{
 
       File file = new File(filename);
       Scanner input = new Scanner(file);
-      String str = input.nextLine();
-
       
+
+
 
 
     }

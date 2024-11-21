@@ -84,7 +84,8 @@ public class tester{
 
           if (robots[i][0] > 0 && robots[i][1] > 0){
 
-            if (i == 180){ // REPLACE WITH ANY TO GET HOW LONG IT TAKES TO GET THERE. THIS WAS PART B
+            if (i == 180){ // To find what's at each output, put the number that outputs that here. This is how I solved Part B.
+              // To do part A, replace (i == 180) with (robots[i][0] == 17 && robots[i][1] == 61) and return i instead.
               return robots[i][0];
             }
 
