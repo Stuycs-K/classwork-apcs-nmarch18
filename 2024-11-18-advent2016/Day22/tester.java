@@ -5,6 +5,7 @@ import java.util.*;
 public class tester{
 
   public static int getNumPairs(String filename){
+    
     try{
       File file = new File(filename);
       Scanner input = new Scanner(file);
@@ -33,7 +34,5 @@ public class tester{
       return 0;
     }
   }
-
-  
 
 }

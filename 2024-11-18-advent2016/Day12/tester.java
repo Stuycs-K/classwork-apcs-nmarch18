@@ -19,13 +19,10 @@ public class tester{
         cmds.add(command);
       }
 
-      cmds.remove(cmds.size()-1);
-      System.out.println(cmds);
-
       int i = 0;
       String cmd;
       char arg, arg2;
-      int n = 0;
+      int n = 0, k = 0;
 
       while (i < cmds.size()){
 
@@ -84,7 +81,7 @@ public class tester{
 
         if (cmd.contains("jnz")){
 
-          int k = 0;
+          k = 0;
 
           if (arg == 'a'){k = a;}
           else
@@ -100,8 +97,8 @@ public class tester{
             n = Integer.parseInt(cmd.substring(6).replaceAll("[a-z, ]", ""));
             i += (n-1);
           }
-
         }
+
         i++;
       }
       return ("\n🌟🎉 a = " + a + " 🎉🌟"); // Trust the process.
