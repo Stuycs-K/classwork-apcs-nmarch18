@@ -28,7 +28,6 @@ public class Driver{
         else{
           Text.color(BLUE);
           System.out.print("O");
-          Text.wait(1);
         }
       }
     }
@@ -40,28 +39,35 @@ public class Driver{
     }
   }
 
-  public static void example(){
-  Text.go(14,20);
-  Text.color(YELLOW,Text.background(BLUE),ITALICS);
-  System.out.print("ITALICS FISH!~~~~");
-  Text.go(12,10);
-  Text.color(GREEN,Text.background(YELLOW),BRIGHT);
-  System.out.print("_#o.o#_");
-  Text.wait(500);
-  Text.erase(14,20,2);
-  Text.wait(500);
-  Text.erase(14,22,2);
-  Text.wait(500);
-  Text.erase(14,24,2);
-  Text.wait(500);
-  Text.erase(14,26,2);
-  Text.go(15,0);
-  System.out.println(RESET);
+  public static void addInts(){
+    int[] nums = new int[3];
+    for (int i = 0; i < 3; i++){
+      nums[i] = (int)(100 * Math.random());
+      for (int k = 0; k < 3; k++){
+        Text.color(Text.bright(YELLOW));
+        Text.go(2,20*i+20);
+        System.out.print("?");
+        Text.wait(250);
+        Text.erase(2,20*i+20,1);
+        Text.wait(250);
+      }
+      Text.go(2,20*i+20);
+      Text.color(WHITE);
+      if (nums[i] < 25){Text.color(Text.bright(RED));}
+      if (nums[i] > 75){Text.color(Text.bright(GREEN));}
+      System.out.print(nums[i]);
+      Text.wait(100);
+    }
   }
 
   public static void main(String[] args){
-    System.out.println(CLEAR_SCREEN);
+    System.out.println(CLEAR_SCREEN + HIDE_CURSOR);
     addBorder();
+    addInts();
+
+
+
+
     Text.go(31,0);
   }
 }
