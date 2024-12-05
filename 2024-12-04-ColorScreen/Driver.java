@@ -23,13 +23,13 @@ public class Driver{
         if ((x + y) % 2 == 0){
           Text.color(CYAN);
           System.out.print("X");
-          Text.wait(1);
         }
         else{
           Text.color(BLUE);
           System.out.print("O");
         }
       }
+      Text.wait(5);
     }
     for (int row = 15; row >= 2; row--){
       Text.erase(row,2,78);
@@ -60,14 +60,28 @@ public class Driver{
     }
   }
 
+  public static void addSeparator(){
+    for (int d = 2; d <= 4; d++){
+      for (int x = d; x <= 79; x+= 3){
+        Text.go(3,x);
+        if (x % 2 == 0){
+          Text.color(BLUE);
+          System.out.print("-");
+        }
+        else{
+          Text.color(CYAN);
+          System.out.print("~");
+        }
+        Text.wait(5);
+      }
+    }
+  }
+
   public static void main(String[] args){
     System.out.println(CLEAR_SCREEN + HIDE_CURSOR);
     addBorder();
     addInts();
-
-
-
-
+    addSeparator();
     Text.go(31,0);
   }
 }
