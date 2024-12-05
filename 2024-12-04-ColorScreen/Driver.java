@@ -39,7 +39,7 @@ public class Driver{
     }
   }
 
-  public static void addInts(){
+  public static int[] addInts(){ // need to save array for the result print
     int[] nums = new int[3];
     for (int i = 0; i < 3; i++){
       nums[i] = (int)(100 * Math.random());
@@ -58,6 +58,7 @@ public class Driver{
       System.out.print(nums[i]);
       Text.wait(100);
     }
+    return nums;
   }
 
   public static void addSeparator(){
@@ -77,11 +78,67 @@ public class Driver{
     }
   }
 
+  public static void addResult(int[] nums){
+    int w = 0;
+    int l = 0;
+    for (int i : nums){
+      if (i > 75){w++;}
+      if (i < 25){l++;}
+    }
+    Text.go(5, 35);
+    Text.color(Text.bright(YELLOW));
+    System.out.print(" * RESULTS * ");
+    Text.wait(500);
+    Text.go(7, 35);
+    Text.color(Text.bright(WHITE));
+    System.out.print("Hits: ");
+    Text.color(Text.bright(GREEN));
+    System.out.print(w);
+    Text.wait(500);
+    Text.go(9, 35);
+    Text.color(Text.bright(WHITE));
+    System.out.print("Misses: ");
+    Text.color(Text.bright(RED));
+    System.out.print(l);
+    Text.wait(500);
+    Text.go(11, 35);
+    Text.color(Text.bright(YELLOW));
+    System.out.print(" * PRIZE * ");
+    Text.wait(500);
+    Text.go(13, 20);
+    Text.color(Text.bright(WHITE));
+    System.out.print("You ");
+    for (int i = 0; i < 3; i++){
+      System.out.print(".");
+      Text.wait(750);
+    }
+    if (l > 0){
+      System.out.print(" lost! You got a miss. Try again!");
+    }
+    else if (w == 0){
+      System.out.print(" wasted your time! You got nothing. Try again!");
+    }
+    else{
+      System.out.print(" won ");
+      if (w == 3){
+        System.out.print("the MEGA jackpot of $1.00! Congrats!");
+      }
+      if (w == 2){
+        System.out.print("a prize of $0.10! Congrats!");
+      }
+      if (w == 1){
+        System.out.print("a prize of $0.01! Congrats!");
+      }
+    }
+
+  }
+
   public static void main(String[] args){
     System.out.println(CLEAR_SCREEN + HIDE_CURSOR);
     addBorder();
-    addInts();
+    int[] nums = addInts();
     addSeparator();
+    addResult(nums);
     Text.go(31,0);
   }
 }
