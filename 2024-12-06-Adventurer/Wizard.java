@@ -17,7 +17,7 @@ public class Wizard extends Adventurer{
   }
 
   public String getSpecialName(){
-    return "Mana";
+    return "mana";
   }
 
   public int getSpecial(){
@@ -29,13 +29,9 @@ public class Wizard extends Adventurer{
   }
 
   public int getSpecialMax(){
-    return 5;
+    return 5; // max 5 mana
   }
 
-  /*
-    all adventurers must have a way to attack enemies and
-    support their allys
-  */
   //hurt or hinder the target adventurer
   public String attack(Adventurer other){
     int d = (int)(5 * Math.random() + 1);
@@ -53,7 +49,7 @@ public class Wizard extends Adventurer{
   //heall or buff self
   public String support(){
     int h = (int)(3 * Math.random() + 1);
-    int s = (int)(2 * Math.random() + 1);
+    int s = (int)(3 * Math.random() + 1);
     applyHeal(h);
     restoreSpecial(s);
     return (getName() + " healed himself by " + h + " health and gained " + s + " mana!");
@@ -61,12 +57,13 @@ public class Wizard extends Adventurer{
 
   //hurt or hinder the target adventurer, consume some special resource
   public String specialAttack(Adventurer other){
-    if (this.mana == 5){
+    if (this.mana >= 5){
       this.mana -= 5;
-      int d = (int)(10 * Math.random() + 1);
-      other.applyDamage(d);
-      applyDamage(d);
-      return (getName() + " unleashed a violent fireball that hurt everybody for " + d + " damage!");
+      int d1 = (int)(5 * Math.random() + 6);
+      int d2 = (int)(5 * Math.random() + 1);
+      other.applyDamage(d1);
+      applyDamage(d2);
+      return (getName() + " unleashed a violent fireball that hurt himself for " + d2 + " damage and " + other.getName() + " for " + d1 + " damage!");
     }
     return (getName() + " tried to cast a fireball but failed!");
   }
