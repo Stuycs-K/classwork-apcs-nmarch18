@@ -29,7 +29,7 @@ public class Wizard extends Adventurer{
   }
 
   public int getSpecialMax(){
-    return 10;
+    return 5;
   }
 
   /*
@@ -52,19 +52,23 @@ public class Wizard extends Adventurer{
 
   //heall or buff self
   public String support(){
-    int h = (int)(1 * Math.random() + 1);
+    int h = (int)(3 * Math.random() + 1);
+    int s = (int)(2 * Math.random() + 1);
     applyHeal(h);
-    return (getName() + " healed himself by " + h + " health");
+    restoreSpecial(s);
+    return (getName() + " healed himself by " + h + " health and gained " + s + " mana!");
   }
 
   //hurt or hinder the target adventurer, consume some special resource
   public String specialAttack(Adventurer other){
-    if (this.mana == 10){
-      this.mana -= 10;
-      other.applyDamage((int)(10 * Math.random() + 1));
-      applyDamage((int)(10 * Math.random() + 1));
+    if (this.mana == 5){
+      this.mana -= 5;
+      int d = (int)(10 * Math.random() + 1);
+      other.applyDamage(d);
+      applyDamage(d);
+      return (getName() + " unleashed a violent fireball that hurt everybody for " + d + " damage!");
     }
-    return (getName() + " created a violent fireball that hurt everybody!");
+    return (getName() + " tried to cast a fireball but failed!");
   }
 
 }
