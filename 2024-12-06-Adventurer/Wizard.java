@@ -38,21 +38,33 @@ public class Wizard extends Adventurer{
   */
   //hurt or hinder the target adventurer
   public String attack(Adventurer other){
-    return null;
+    int d = (int)(5 * Math.random() + 1);
+    other.applyDamage(d);
+    return (getName() + " attacked " + other.getName() + " for " + d + " damage!");
   }
 
   //heall or buff the target adventurer
   public String support(Adventurer other){
-    return null;
+    int h = (int)(3 * Math.random() + 1);
+    other.applyHeal(h);
+    return (getName() + " healed " + other.getName() + " by " + h + " health!");
   }
 
   //heall or buff self
   public String support(){
-    return null;
+    int h = (int)(1 * Math.random() + 1);
+    applyHeal(h);
+    return (getName() + " healed himself by " + h + " health");
   }
 
   //hurt or hinder the target adventurer, consume some special resource
   public String specialAttack(Adventurer other){
-    return null;
+    if (this.mana == 10){
+      this.mana -= 10;
+      other.applyDamage((int)(10 * Math.random() + 1));
+      applyDamage((int)(10 * Math.random() + 1));
+    }
+    return (getName() + " created a violent fireball that hurt everybody!");
   }
+
 }
