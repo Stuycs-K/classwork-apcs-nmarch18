@@ -19,8 +19,8 @@ public abstract class Adventurer{
   //concrete method written using abstract methods.
   //refill special resource by amount, but only up to at most getSpecialMax()
   public int restoreSpecial(int n){
-      if( n > getSpecialMax() - getSpecial()){
-              n = getSpecialMax() - getSpecial();
+      if(n > getSpecialMax() - getSpecial()){
+        n = getSpecialMax() - getSpecial();
       }
       setSpecial(getSpecial()+n);
       return n;
@@ -62,7 +62,9 @@ public abstract class Adventurer{
     this.HP -= amount;
   }
 
-
+  public void applyHeal(int amount){
+    this.HP += amount;
+  }
 
   //toString method
   public String toString(){
@@ -75,22 +77,24 @@ public abstract class Adventurer{
   }
 
   public int getHP(){
-      return HP;
+    return HP;
   }
 
   public int getmaxHP(){
-      return maxHP;
+    return maxHP;
   }
+  
   public void setmaxHP(int newMax){
-        maxHP = newMax;
+    maxHP = newMax;
   }
 
   //Set Methods
   public void setHP(int health){
-      this.HP = health;
+    this.HP = health;
   }
 
   public void setName(String s){
-      this.name = s;
+    this.name = s;
   }
+
 }
