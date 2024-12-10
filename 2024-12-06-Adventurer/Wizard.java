@@ -1,14 +1,16 @@
 public class Wizard extends Adventurer{
   private int mana;
 
+  public Wizard(){
+    this("Wiz");
+  }
+
   public Wizard(String name){
-    super(name);
-    mana = 0;
+    this(name,25);
   }
 
   public Wizard(String name, int hp){
-    super(name, hp);
-    mana = 0;
+    this(name,hp,0);
   }
 
   public Wizard(String name, int hp, int mana){
